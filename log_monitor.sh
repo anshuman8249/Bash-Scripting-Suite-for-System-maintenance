@@ -1,14 +1,16 @@
-set -e
-LOG="/var/log/auth.log"
-ERROR_COUNT=$(grep -ci "failed" $LOG)
-DISK_USE=$(df / | tail -1 | awk '{print $5}' | tr -d '%')
+#!/bin/bash
+LOG="$HOME/wipro-capstone/logs/monitor.log"
+SYSLOG="/var/log/syslog"
 
-if [ "$ERROR_COUNT" -gt 20 ]; then
-    echo "Warning: $ERROR_COUNT failed login attempts."
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting log monitoring..." >> "$LOG"
+
+if tail -n 100 "$SYSLOG" 2>/dev/null | grep -iE "(error|fail|warning|critical|panic|kernel)" > /tmp/alerts.tmp; then
+    COUNT=$(wc -l < /tmp/alerts.tmp)
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] ALERT: $COUNT critical messages found!" | tee -a "$LOG"
+    echo "----- Recent Critical Messages -----" >> "$LOG"
+    cat /tmp/alerts.tmp >> "$LOG"
+else
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] No critical issues found in last 100 lines." >> "$LOG"
 fi
 
-if [ "$DISK_USE" -gt 80 ]; then
-    echo "Warning: Disk usage is ${DISK_USE}%!"
-fi
-
-echo "Log monitoring done."
+rm -f /tmp/alerts.tmp
