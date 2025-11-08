@@ -1,12 +1,13 @@
 Wipro Capstone Project – Assignment 5 (LinuxOS & LSP)  
 Bash Scripting Suite for System Maintenance
 
+```
 Name: Anshuman Behera
 GitHub: [anshuman8249]([https://github.com/anshuman8249])  
 Email: anshumanbehera49@gmail.com
 Date: November 08, 2025  
 Live Project:https://github.com/anshuman8249/Bash-Scripting-Suite-for-System-maintenance
-
+```
 
 Objective (As Per Assignment)
 Write a suite of Bash scripts to automate system maintenance tasks such as backup, system updates, log monitoring, and combine them into a menu to execute them.
@@ -29,6 +30,7 @@ How to Run
 ```bash
 cd ~/wipro-capstone
 ./main.sh
+
 
 
 
