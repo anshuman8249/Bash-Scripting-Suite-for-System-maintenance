@@ -1,22 +1,52 @@
-LOGFILE="/var/log/maint_suite/maint.log"
-exec > >(tee -a "$LOGFILE") 2>&1
-while true; do
-  echo "===== Maintenance Menu ====="
-  echo "1) Backup"
-  echo "2) Update & Clean"
-  echo "3) Log Monitor"
-  echo "4) Run All"
-  echo "5) Exit"
-  read -p "Enter choice [1-5]: " choice
+#!/bin/bash
 
-  case $choice in
-    1) sudo bash /opt/Scripting_suite/backup.sh ;;
-    2) sudo bash /opt/Scripting_suite/update_and_cleanup.sh ;;
-    3) sudo bash /opt/Scripting_suite/log_monitor.sh ;;
-    4) sudo bash /opt/Scripting_suite/backup.sh
-       sudo bash /opt/Scripting_suite/update_and_cleanup.sh
-       sudo bash /opt/Scripting_suite/log_monitor.sh ;;
-    5) echo "Goodbye!"; exit 0 ;;
-    *) echo "Invalid choice." ;;
-  esac
+SCRIPTS="$HOME/wipro-capstone/scripts"
+LOGS="$HOME/wipro-capstone/logs"
+mkdir -p "$LOGS"
+
+while true; do
+    clear
+
+    echo "Bash Scripting Suite for System 
+Maintenance "
+    echo "1. Backup Documents"
+    echo "2. Update & Clean System"
+    echo "3. Monitor System Logs"
+    echo "4. View All Logs"
+    echo "5. Exit"
+    read -p "Choose [1-5]: " opt
+
+    case $opt in
+        1) 
+            echo "Running Backup..."
+            bash "$SCRIPTS/backup.sh"
+            ;;
+        2) 
+            echo "Running System Update..."
+            bash "$SCRIPTS/update-clean.sh"
+            ;;
+        3) 
+            echo "Monitoring Logs..."
+            bash "$SCRIPTS/logwatch.sh"
+            ;;
+        4) 
+            echo "Opening logs..."
+            if ls "$LOGS"/* 1> /dev/null 2>&1; then
+                less +G "$LOGS"/*
+            else
+                echo "No logs yet. Run other options first."
+            fi
+            ;;
+        5) 
+            echo "Thank you! Suite exiting..."
+            exit 0
+            ;;
+        *) 
+            echo "Invalid option! Try again."
+            sleep 1
+            ;;
+    esac
+
+    echo -e "\nPress Enter to continue..."
+    read
 done
