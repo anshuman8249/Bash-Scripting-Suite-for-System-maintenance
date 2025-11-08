@@ -2,8 +2,8 @@ Wipro Capstone Project – Assignment 5 (LinuxOS & LSP)
 Bash Scripting Suite for System Maintenance
 
 Name: Anshuman Behera
-GitHub: [anshuman8249](https://github.com/Nikhilesh-24-M)  
-Email: nikhileshmohanta24ofc@gmail.com  
+GitHub: [anshuman8249]([https://github.com/anshuman8249])  
+Email: anshumanbehera49@gmail.com
 Date: November 08, 2025  
 Live Project: https://github.com/Nikhilesh-24-M/Assignment--5-Bash-Scripting-Suite-for-System-Maintenance-
 
@@ -29,3 +29,4 @@ How to Run
 ```bash
 cd ~/wipro-capstone
 ./main.sh
+
