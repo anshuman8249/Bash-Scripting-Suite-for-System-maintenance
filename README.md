@@ -17,9 +17,9 @@ Day-wise Tasks (Exactly as in Assignment Table)
 | Day | Task | Status | Implementation |
 |-----|------|--------|----------------|
 | **Day 1** | Write a script for automated system backup | Done | `scripts/backup.sh` – Uses `rsync` with timestamp |
-| **Day 2** | Create a script to perform system updates and cleanup | Done | `scripts/update-clean.sh` – `apt update`, `upgrade`, `autoremove`, `autoclean` |
-| **Day 3** | Develop a log monitoring script to alert on certain conditions | Done | `scripts/logwatch.sh` – Monitors `/var/log/syslog` for `error`, `fail`, `warning` |
-| **Day 4** | Combine scripts into a maintenance suite with a menu to execute them | Done | `main.sh` – Interactive menu with 5 options |
+| **Day 2** | Create a script to perform system updates and cleanup | Done | `scripts/update_and_cleanup.sh` – `apt update`, `upgrade`, `autoremove`, `autoclean` |
+| **Day 3** | Develop a log monitoring script to alert on certain conditions | Done | `scripts/logmoniter.sh` – Monitors `/var/log/syslog` for `error`, `fail`, `warning` |
+| **Day 4** | Combine scripts into a maintenance suite with a menu to execute them | Done | `maint_menu.sh` – Interactive menu with 5 options |
 | **Day 5** | Test scripts and add error handling and logging functionalities | Done | Full logging to `logs/`, input validation, exit codes |
 
 
@@ -29,5 +29,6 @@ How to Run
 ```bash
 cd ~/wipro-capstone
 ./main.sh
+
 
 
