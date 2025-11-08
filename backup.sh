@@ -1,8 +1,10 @@
-set -e
-BACKUP_DIR="/var/backups/Scripting_suite"
-DATE=$(date +%F-%H%M)
-BACKUP_FILE="$BACKUP_DIR/backup-$DATE.tar.gz"
+#!/bin/bash
+LOG="$HOME/wipro-capstone/logs/backup.log"
+DATE=$(date "+%Y-%m-%d_%H-%M-%S")
+SOURCE="$HOME/Documents"
+DEST="$HOME/Backups"
 
-echo "Starting backup..."
-sudo tar -czf "$BACKUP_FILE" /etc /home
-echo "Backup saved to $BACKUP_FILE"
+mkdir -p "$DEST"
+tar -czf "$DEST/backup_$DATE.tar.gz" "$SOURCE" >> "$LOG" 2>&1
+echo "$(date): Backup completed successfully." >> "$LOG"
+echo "Backup done! Check $LOG for details."
